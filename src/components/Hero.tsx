@@ -8,11 +8,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { HERO_SLIDES } from '../types';
 
-import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { HERO_SLIDES } from '../types';
-
 // Import images to ensure they are bundled by Vite
 import img1 from '../assets/images/hero_elevated_style_1787058813264.jpg';
 import img2 from '../assets/images/hero_summer_vibes_1787058831756.jpg';
