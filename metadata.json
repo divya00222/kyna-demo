@@ -1,0 +1,6 @@
+{
+  "name": "KYNA FASHION",
+  "description": "A modern fashion and clothing e-commerce destination focusing on clean aesthetics and responsive shopping experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
