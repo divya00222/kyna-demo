@@ -8,17 +8,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { HERO_SLIDES } from '../types';
 
-// Import images to ensure they are bundled by Vite
-import img1 from '../assets/images/hero_elevated_style_1787058813264.jpg';
-import img2 from '../assets/images/hero_summer_vibes_1787058831756.jpg';
-import img3 from '../assets/images/hero_urban_chic_1787058851493.jpg';
-
-const imageMap: Record<string, string> = {
-  '/src/assets/images/hero_elevated_style_1787058813264.jpg': img1,
-  '/src/assets/images/hero_summer_vibes_1787058831756.jpg': img2,
-  '/src/assets/images/hero_urban_chic_1787058851493.jpg': img3,
-};
-
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -55,7 +44,7 @@ export default function Hero() {
   };
 
   const slide = HERO_SLIDES[currentSlide];
-  const imageUrl = imageMap[slide.image] || slide.image;
+  const imageUrl = slide.image;
 
   return (
     <section className="w-full py-6 flex justify-center">

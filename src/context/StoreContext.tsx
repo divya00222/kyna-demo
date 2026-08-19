@@ -5,6 +5,8 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { Product } from '../types';
+import prodFloralDress from '../assets/images/prod_floral_dress_1_1787059846998.jpg';
+import prodCoordSet from '../assets/images/prod_coord_set_1_1787059861113.jpg';
 
 export interface CartItem {
   product: Product;
@@ -44,7 +46,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         price: 899,
         originalPrice: 1799,
         discount: 50,
-        image: '/src/assets/images/prod_floral_dress_1_1787059846998.jpg',
+        image: prodFloralDress,
         category: 'Dresses',
         rating: 4.2,
         reviewsCount: 120,
@@ -59,7 +61,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         price: 1249,
         originalPrice: 2499,
         discount: 50,
-        image: '/src/assets/images/prod_coord_set_1_1787059861113.jpg',
+        image: prodCoordSet,
         category: 'Co-ords',
         rating: 4.5,
         reviewsCount: 85,

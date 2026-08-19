@@ -5,9 +5,10 @@
 
 import { motion } from 'motion/react';
 import { Instagram, Mail, ArrowRight } from 'lucide-react';
+import instaFashion1 from '../assets/images/insta_fashion_1_1787060345645.jpg';
 
 const INSTA_POSTS = [
-  { id: 1, image: '/src/assets/images/insta_fashion_1_1787060345645.jpg' },
+  { id: 1, image: instaFashion1 },
   { id: 2, image: 'https://picsum.photos/seed/fashion2/800/800' },
   { id: 3, image: 'https://picsum.photos/seed/fashion3/800/800' },
   { id: 4, image: 'https://picsum.photos/seed/fashion4/800/800' },
