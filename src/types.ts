@@ -75,7 +75,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 ];
 
 export const CATEGORIES: Category[] = [
-  { id: 1, name: 'Kurtis', image: '/src/assets/images/cat_kurtis_1787059127976.jpg', href: '#' },
+  { id: 1, name: 'Kurtis', image: '/assets/images/cat_kurtis_1787059127976.jpg', href: '#' },
   { id: 2, name: 'Dresses', image: '/src/assets/images/cat_dresses_1787059144662.jpg', href: '#' },
   { id: 3, name: 'Tops', image: '/src/assets/images/cat_tops_1787059161920.jpg', href: '#' },
   { id: 4, name: 'Co-ord Sets', image: '/src/assets/images/cat_coord_sets_1787059173514.jpg', href: '#' },
