@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
 import { Heart, Star, ShoppingCart } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Product } from '../types';
+import { useStore } from '../context/StoreContext';
 
 interface ProductCardProps {
   product: Product;
@@ -14,7 +14,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  const { wishlistItems, toggleWishlist, addToCart } = useStore();
+  const isWishlisted = wishlistItems.some((item) => item.id === product.id);
 
   return (
     <motion.div 
@@ -37,7 +38,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <button 
           onClick={(e) => {
             e.preventDefault();
-            setIsWishlisted(!isWishlisted);
+            toggleWishlist(product);
           }}
           className="absolute top-3 right-3 p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm hover:bg-white transition-colors z-10"
         >
@@ -49,7 +50,13 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Quick Add Button (Desktop) */}
         <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-white/60 backdrop-blur-md hidden md:flex items-center justify-center">
-          <button className="w-full bg-neutral-900 text-white py-2.5 text-xs font-bold tracking-widest flex items-center justify-center gap-2 hover:bg-black transition-colors rounded-md">
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              addToCart(product);
+            }}
+            className="w-full bg-neutral-900 text-white py-2.5 text-xs font-bold tracking-widest flex items-center justify-center gap-2 hover:bg-black transition-colors rounded-md"
+          >
             <ShoppingCart size={14} />
             ADD TO BAG
           </button>

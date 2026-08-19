@@ -8,10 +8,22 @@ import { Search, User, Heart, ShoppingBag, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { NAV_LINKS } from '../types';
 import MobileMenu from './MobileMenu';
+import { useStore } from '../context/StoreContext';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const { 
+    cartItems, 
+    wishlistItems, 
+    user, 
+    setCartOpen, 
+    setWishlistOpen, 
+    setLoginOpen, 
+    setSearchOpen,
+    logout 
+  } = useStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,24 +89,42 @@ export default function Header() {
             </div>
 
             {/* Mobile Search Icon */}
-            <button className="xl:hidden p-2 text-neutral-700 hover:bg-neutral-50 rounded-full transition-colors">
+            <button 
+              onClick={() => setSearchOpen(true)} 
+              className="xl:hidden p-2 text-neutral-700 hover:bg-neutral-50 rounded-full transition-colors"
+            >
               <Search size={20} />
             </button>
 
             <div className="flex items-center gap-1 md:gap-3">
-              <button className="hidden sm:flex p-2 text-neutral-700 hover:bg-neutral-50 rounded-full transition-colors items-center gap-2 group">
+              <button 
+                onClick={() => user ? logout() : setLoginOpen(true)} 
+                className="hidden sm:flex p-2 text-neutral-700 hover:bg-neutral-50 rounded-full transition-colors items-center gap-2 group"
+              >
                 <User size={20} />
-                <span className="hidden lg:inline text-xs font-bold tracking-wide">LOGIN</span>
+                <span className="hidden lg:inline text-xs font-bold tracking-wide uppercase">
+                  {user ? user.name : 'LOGIN'}
+                </span>
               </button>
               
-              <button className="p-2 text-neutral-700 hover:bg-neutral-50 rounded-full transition-colors relative group">
+              <button 
+                onClick={() => setWishlistOpen(true)} 
+                className="p-2 text-neutral-700 hover:bg-neutral-50 rounded-full transition-colors relative group"
+              >
                 <Heart size={20} />
-                <span className="absolute top-1 right-1 w-4 h-4 bg-fuchsia-500 text-white text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-white">0</span>
+                <span className="absolute top-1 right-1 w-4 h-4 bg-fuchsia-500 text-white text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-white">
+                  {wishlistItems.length}
+                </span>
               </button>
               
-              <button className="p-2 text-neutral-700 hover:bg-neutral-50 rounded-full transition-colors relative group">
+              <button 
+                onClick={() => setCartOpen(true)} 
+                className="p-2 text-neutral-700 hover:bg-neutral-50 rounded-full transition-colors relative group"
+              >
                 <ShoppingBag size={20} />
-                <span className="absolute top-1 right-1 w-4 h-4 bg-neutral-900 text-white text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-white">3</span>
+                <span className="absolute top-1 right-1 w-4 h-4 bg-neutral-900 text-white text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-white">
+                  {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
+                </span>
               </button>
             </div>
           </div>
